@@ -46,6 +46,9 @@
     <ClCompile Include="src\ofApp.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\OpeningScreen.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -107,8 +110,16 @@
     <ClInclude Include="src\fancyIdleCamera.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\OpeningScreen.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".env">
+      <Filter>src</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -1,21 +1,21 @@
 #include "ofApp.h"
 
 void ofApp::setup() {
-	fancyIdleCam.setup();
+
 }
 
 void ofApp::update(){
 }
 
 void ofApp::draw() {
-	fancyIdleCam.draw();
 
-	ofDrawBitmapString("press SPACE to get started", ofGetWidth()/2, ofGetHeight()/2);
 }
 
 void ofApp::keyPressed(int key) {
 	if (key == ' ')
+		
 		;
+
 }
 
 void ofApp::keyReleased(int key)

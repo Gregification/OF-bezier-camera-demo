@@ -3,6 +3,6 @@ obj
 .vs
 
 #google maps api key goes in the .env file. its "free" if you use under $200 of the service
-#.env
+.env
 
-#visual studio sucks. its like they actuvely make it difficult to use while over engineering everything. it has a 50/50 chance empty all project files if you dont wait the 2 mins it takes to close and open VS. wouldnt put it past being a intentional designe to make microsoft "unique".
+#visual studio sucks. its like they actuvely make it difficult to use while over engineering everything. it has a 50/50 chance overwrite all project files if you dont wait the 2 mins it takes to close and open VS. wouldnt put it past being a intentional designe to make microsoft "unique & desireable skill".

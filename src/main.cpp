@@ -1,5 +1,6 @@
 #include "ofMain.h"
 #include "ofApp.h"
+#include <OpeningScreen.h>
 
 //========================================================================
 int main( ){
@@ -11,6 +12,6 @@ int main( ){
 
 	auto window = ofCreateWindow(settings);
 
-	ofRunApp(window, make_shared<ofApp>());
+	ofRunApp(window, make_shared<OpeningScreen>());
 	ofRunMainLoop();
 }
