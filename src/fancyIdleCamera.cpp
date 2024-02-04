@@ -123,6 +123,11 @@ void fancyIdleCamera::makeShapeField() {
 
 }
 
+void fancyIdleCamera::disable() {
+	nodes.clear();
+	coeffs.clear();
+}
+
 inline long fancyIdleCamera::binom(size_t n, size_t k) noexcept {
 	if (k == 0 || k == n)
 		return 1;

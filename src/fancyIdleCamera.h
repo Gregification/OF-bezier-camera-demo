@@ -11,6 +11,7 @@ class fancyIdleCamera {
 		void draw();
 		void doIdel();
 		void makeShapeField();
+		void disable();
 
 		vector<unique_ptr<ofNode>> nodes;
 		ofEasyCam camera;

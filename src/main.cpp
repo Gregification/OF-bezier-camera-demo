@@ -1,6 +1,9 @@
 #include "ofMain.h"
 #include "ofApp.h"
-#include <OpeningScreen.h>
+
+/**
+* apparently state management is not a concept openframework recoginizes, neither is inheritance it seems too
+*/
 
 //========================================================================
 int main( ){
@@ -10,8 +13,9 @@ int main( ){
 	settings.setSize(1024, 768);
 	settings.windowMode = OF_WINDOW; //can also be OF_FULLSCREEN
 
-	auto window = ofCreateWindow(settings);
+	shared_ptr<ofAppBaseWindow> window = ofCreateWindow(settings);
+	auto opening = make_shared<ofApp>();
 
-	ofRunApp(window, make_shared<OpeningScreen>());
+	ofRunApp(window, opening);
 	ofRunMainLoop();
 }

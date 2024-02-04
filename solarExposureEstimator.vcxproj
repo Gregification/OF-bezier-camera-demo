@@ -104,6 +104,8 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\AreaSelector.cpp" />
+    <ClCompile Include="src\Evaluator.cpp" />
     <ClCompile Include="src\fancyIdleCamera.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="..\..\addons\ofxGui\src\ofxBaseGui.cpp" />
@@ -117,9 +119,10 @@
     <ClCompile Include="..\..\addons\ofxGui\src\ofxSliderGroup.cpp" />
     <ClCompile Include="..\..\addons\ofxGui\src\ofxToggle.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
-    <ClCompile Include="src\OpeningScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\AreaSelector.h" />
+    <ClInclude Include="src\Evaluator.h" />
     <ClInclude Include="src\fancyIdleCamera.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="..\..\addons\ofxGui\src\ofxBaseGui.h" />
@@ -134,7 +137,6 @@
     <ClInclude Include="..\..\addons\ofxGui\src\ofxSlider.h" />
     <ClInclude Include="..\..\addons\ofxGui\src\ofxSliderGroup.h" />
     <ClInclude Include="..\..\addons\ofxGui\src\ofxToggle.h" />
-    <ClInclude Include="src\OpeningScreen.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
