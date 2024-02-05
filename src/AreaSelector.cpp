@@ -24,9 +24,9 @@ void AreaSelector::setup() {
 	onFetchimagePress(NULL);
 	getImgButton.addListener(this, &AreaSelector::onFetchimagePress);
 
-	image = loadImage("https://cataas.com/cat/sad/says/give%20your%20location");
-
 	system("powershell {mkdir C:/solarExposureCExtimatorCacheFolder}");
+
+	image = loadImage("https://cataas.com/cat/sad/says/no%20location%20provided");
 
 	std::ifstream f("../.env");
 	std::string key;

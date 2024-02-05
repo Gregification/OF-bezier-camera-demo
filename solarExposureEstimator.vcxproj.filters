@@ -124,8 +124,6 @@
     <ResourceCompile Include="icon.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include=".env">
-      <Filter>src</Filter>
-    </None>
+    <None Include=".env" />
   </ItemGroup>
 </Project>
