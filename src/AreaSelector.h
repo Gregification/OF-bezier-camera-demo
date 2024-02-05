@@ -24,14 +24,24 @@ class AreaSelector : public ofBaseApp {
 		bool isReady();
 
 	private:
+		void onFetchimagePress(const void* src);
+		shared_ptr<ofImage> loadImage(std::string url);
+
+		shared_ptr<ofImage> image;
+
 		ofxPanel gui;
 		
 		ofxFloatField
 			latitudeField,
 			longitudeField;
+		ofxIntField
+			resolutionX,
+			resolutionY;
 		ofxIntSlider
 			zoomLevelSlider;
 		ofxTextField
 			apiKey,
 			apiSignature;
+		ofxButton
+			getImgButton;
 };

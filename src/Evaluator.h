@@ -24,5 +24,4 @@ class Evaluator : public ofBaseApp {
 		bool isMapReady();
 
 		ofxPanel gui;
-		
 };

@@ -1,4 +1,5 @@
 #include "AreaSelector.h"
+//windows only because openframework's ofImage.loadImage(...) cant handle a redirection
 
 void AreaSelector::setup() {
 	gui.setup("location editor");
@@ -11,15 +12,39 @@ void AreaSelector::setup() {
 	gui.add(longitudeField.setup("longitude", 0));
 		longitudeField.setMax(180);
 		longitudeField.setMin(-180);
-	gui.add(zoomLevelSlider.setup("zoom", 17, 14, 22));
+	gui.add(resolutionX.setup("resolution X", 400));
+		resolutionX.setMin(120);
+		resolutionX.setMax(1280);//high end of the reasonable limits
+	gui.add(resolutionY.setup("resolution Y", 400));
+		resolutionY.setMin(120);
+		resolutionY.setMax(1280);
+	gui.add(zoomLevelSlider.setup("zoom", 17, 1, 20));
+	gui.add(getImgButton.setup("fetch img"));
+
+	onFetchimagePress(NULL);
+	getImgButton.addListener(this, &AreaSelector::onFetchimagePress);
+
+	image = loadImage("https://cataas.com/cat/sad/says/give%20your%20location");
+
+	system("powershell {mkdir C:/solarExposureCExtimatorCacheFolder}");
+
+	std::ifstream f("../.env");
+	std::string key;
+	f >> key;
+	apiKey = key;
+	f.close();
 }
 
 void AreaSelector::draw() {
+	const auto& img = image.get();
+	if (img->isAllocated())
+		img->draw(ofGetWidth()/2 - img->getWidth()/2, ofGetHeight() / 2 - img->getHeight() / 2);
+
 	gui.draw();
 }
 
-void AreaSelector::update()
-{
+void AreaSelector::update() {
+	
 }
 
 void AreaSelector::keyPressed(int key)
@@ -56,4 +81,54 @@ void AreaSelector::mouseExited(int x, int y)
 
 bool AreaSelector::isReady() {
 	return false;
+}
+
+void AreaSelector::onFetchimagePress(const void * src) {
+	static auto getCurTimeMili = []() { return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()); };
+	
+	//hardcoded spam catch. works good enough
+	static auto formerTime = getCurTimeMili();
+	auto currTime = getCurTimeMili();
+	if ((currTime - formerTime).count() < 1500) return;
+	formerTime = currTime;
+
+	auto key = apiKey.getParameter().toString();
+	if (key.length() < 5) return;
+
+	//we live in a socitey (a high trust socitey)
+	std::string url; 
+	{
+		auto str = std::stringstream();
+		str << "https://maps.googleapis.com/maps/api/staticmap?";
+		str << "center="	<< longitudeField	<< ","	<< latitudeField;
+		str << "\"&\"zoom="		<< zoomLevelSlider;
+		str << "\"&\"size="		<< resolutionX		<< "x"	<< resolutionY;
+		str << "\"&\"key="		<< key;
+		url = str.str();
+	}
+	cout << "url " << url << endl;
+	image = loadImage(url);
+}
+
+shared_ptr<ofImage> AreaSelector::loadImage(std::string src) {
+	const char* url = src.c_str();
+	//download image
+	static const char* destFile = "C:/solarExposureCExtimatorCacheFolder/openFrameworksSucks.png";
+
+	{
+		auto str = std::stringstream();
+		str << "powershell;";
+		str << "wget ";
+		str << "'" << url << "'";
+		str << " -O " << destFile;
+		cout << str.str() << endl;
+		system(str.str().c_str());
+		cout << "system done" << endl;
+	}
+
+	//reopen the image
+	ofImage img;
+	img.load(destFile);
+
+	return std::make_shared<ofImage>(img);
 }
