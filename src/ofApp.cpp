@@ -11,10 +11,6 @@ void ofApp::update(){
 		case State::locationPicker: {
 			areaSelector.update();
 		} break;
-
-		case State::analizer: {
-			evaluator.draw();
-		} break;
 	}
 }
 
@@ -22,16 +18,13 @@ void ofApp::draw() {
 	switch (state) {
 		case State::opening: {
 			fancyIdleCam.draw();
-			ofDrawBitmapString("press SPACE to get started", ofGetWidth() / 2, ofGetHeight() / 2);;
+			//ofDrawBitmapString("press SPACE to get started", ofGetWidth() / 2, ofGetHeight() / 2);;
 		} break;
 
 		case State::locationPicker: {
 			areaSelector.draw();
 		} break;
 
-		case State::analizer: {
-			evaluator.draw();
-		} break;
 	}
 }
 
@@ -43,10 +36,6 @@ void ofApp::keyPressed(int key) {
 
 		case State::locationPicker: {
 			areaSelector.keyPressed(key);
-		} break;
-
-		case State::analizer: {
-			evaluator.keyPressed(key);
 		} break;
 	}
 }
@@ -62,9 +51,6 @@ void ofApp::keyReleased(int key)
 			areaSelector.keyReleased(key);
 		} break;
 
-		case State::analizer: {
-			evaluator.keyReleased(key);
-		} break;
 	}
 }
 
@@ -79,9 +65,6 @@ void ofApp::mouseMoved(int x, int y)
 			areaSelector.mouseMoved(x,y);
 		} break;
 
-		case State::analizer: {
-			evaluator.mouseMoved(x,y);
-		} break;
 	}
 }
 
@@ -96,9 +79,6 @@ void ofApp::mouseDragged(int x, int y, int button)
 			areaSelector.mouseDragged(x,y, button);
 		} break;
 
-		case State::analizer: {
-			evaluator.mouseDragged(x, y, button);
-		} break;
 	}
 }
 
@@ -113,9 +93,6 @@ void ofApp::mousePressed(int x, int y, int button)
 			areaSelector.mousePressed(x, y, button);
 		} break;
 
-		case State::analizer: {
-			evaluator.mousePressed(x, y, button);
-		} break;
 	}
 }
 
@@ -130,9 +107,6 @@ void ofApp::mouseReleased(int x, int y, int button)
 			areaSelector.mouseReleased(x, y, button);
 		} break;
 
-		case State::analizer: {
-			evaluator.mouseReleased(x, y, button);
-		} break;
 	}
 }
 
@@ -147,9 +121,6 @@ void ofApp::mouseEntered(int x, int y)
 			areaSelector.mouseEntered(x, y);
 		} break;
 
-		case State::analizer: {
-			evaluator.mouseEntered(x, y);
-		} break;
 	}
 }
 
@@ -164,9 +135,6 @@ void ofApp::mouseExited(int x, int y)
 			areaSelector.mouseExited(x, y);
 		} break;
 
-		case State::analizer: {
-			evaluator.mouseExited(x, y);
-		} break;
 	}
 }
 
@@ -181,9 +149,6 @@ void ofApp::windowResized(int w, int h)
 			areaSelector.windowResized(w, h);
 		} break;
 
-		case State::analizer: {
-			evaluator.windowResized(w, h);
-		} break;
 	}
 }
 
@@ -198,9 +163,6 @@ void ofApp::dragEvent(ofDragInfo dragInfo)
 			areaSelector.dragEvent(dragInfo);
 		} break;
 
-		case State::analizer: {
-			evaluator.dragEvent(dragInfo);
-		} break;
 	}
 }
 
@@ -214,9 +176,6 @@ void ofApp::gotMessage(ofMessage msg){
 			areaSelector.gotMessage(msg);
 		} break;
 
-		case State::analizer: {
-			evaluator.gotMessage(msg);
-		} break;
 	}
 }
 
@@ -232,10 +191,6 @@ void ofApp::transistionState(State newState)
 			areaSelector.setup();
 		} break;
 
-		case State::analizer: {
-			if(areaSelector.isReady())
-				evaluator.setup();
-		} break;
 	}
 
 	if (state != State::opening)

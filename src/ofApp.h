@@ -4,7 +4,6 @@
 #include "ofxGui.h"
 #include "fancyIdleCamera.h"
 #include <AreaSelector.h>
-#include <Evaluator.h>
 
 class ofApp : public ofBaseApp {
 
@@ -27,14 +26,13 @@ class ofApp : public ofBaseApp {
 
 		fancyIdleCamera fancyIdleCam;
 		AreaSelector areaSelector;
-		Evaluator evaluator;
 
 	private:
 		static ofVec3f getRandVec3(float min, float max) {
 			return ofVec3f(ofRandom(min, max), ofRandom(min, max), ofRandom(min, max));
 		}
 
-		enum State {opening,locationPicker, analizer};
+		enum State {opening,locationPicker};
 		State state = State::opening;
 		void transistionState(State newState);
 };

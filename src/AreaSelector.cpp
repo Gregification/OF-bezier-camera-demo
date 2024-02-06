@@ -1,5 +1,5 @@
 #include "AreaSelector.h"
-//windows only because openframework's ofImage.loadImage(...) cant handle a redirection
+//windows only because openframework's ofImage.loadImage(...) cant handle https redirection
 
 void AreaSelector::setup() {
 	gui.setup("location editor");
